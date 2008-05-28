@@ -1,6 +1,7 @@
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
 require("wx")
+dofile("treectrl.lua")
 
 myFrame = {}
 
@@ -50,19 +51,31 @@ end
 
 function myFrame:init()
     self:idInit()
-    self.xmlResource = wx.wxXmlResource()
-    self.xmlResource:InitAllHandlers()
     
-    self.xmlResource:Load("myframe.xrc")
-    
-    self.frame = wx.wxFrame()
-    self.xmlResource:LoadFrame(self.frame, wx.NULL, "fmMain")
+    self.frame = wx.wxFrame(wx.NULL,
+                        wx.wxID_ANY,
+                        "wxAUI Sample Application",
+                        wx.wxDefaultPosition,
+                        wx.wxSize(800, 600));
     
     -- set up menu bar
     self.menubar = wx.wxMenuBar()
     self.frame:SetMenuBar(self.menubar)
     self:fileMenu()
+    
+    -- set up aui manager
+    self.frame.m_mgr = wxaui.wxAuiManager()
+    self.frame.m_mgr:SetManagedWindow(self.frame)
+    
+    -- status bar
+    self.frame:CreateStatusBar()
+    self.frame:GetStatusBar():SetStatusText("Ready")
 
+    -- testing
+    local leftTree = treeCtrl:new(self.frame)
+    -- wx.wxMessageBox("What is treeCtrl " .. type(treeCtrl),"",wx.wxOK+wx.wxICON_EXCLAMATION,wx.NULL)
+    self.frame.m_mgr:AddPane(leftTree,wxaui.wxAuiPaneInfo():Name("test"):Caption("Blah"):Left():Layer(1):Position(1):CloseButton(true):MaximizeButton(true))
+    
 end
 
 function myFrame:show()
