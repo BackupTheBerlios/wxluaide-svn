@@ -1,7 +1,7 @@
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
 require("wx")
-dofile("treectrl.lua")
+-- dofile("treectrl.lua")
 
 myFrame = {}
 
@@ -45,6 +45,19 @@ function myFrame:fileMenu()
 end
 
 -- project tree control
+function myFrame:CreateTreeCtrl()
+    
+    tree = wx.wxTreeCtrl(self.frame, wx.wxID_ANY,
+            wx.wxPoint(0,0), wx.wxSize(160,250),
+            wx.wxTR_DEFAULT_STYLE + wx.wxNO_BORDER);
+            
+    local root = tree:AddRoot("Project",0);
+
+    local items = {}
+    items[#items+1] = tree:AppendItem(root,"item 1",0)
+    items[#items+1] = tree:AppendItem(root,"item 2",0)
+    return tree
+end
 function myFrame:projectTree()
     -- self.tree = wx.wxTreeCtrl(parent, wx.wxID_ANY, wx.wxDefaultPosition, wx.wxSize(-1,200), wx.wxTR_LINES_AT_ROOT + wx.wxTR_HAS_BUTTONS)
 end
@@ -72,7 +85,13 @@ function myFrame:init()
     self.frame:GetStatusBar():SetStatusText("Ready")
 
     -- testing
-    local leftTree = treeCtrl:new(self.frame)
+    self.m_notebook_style = wxaui.wxAUI_NB_DEFAULT_STYLE + wxaui.wxAUI_NB_TAB_EXTERNAL_MOVE + wx.wxNO_BORDER;
+    local w,h = self.frame:GetClientSizeWH();
+    local ctrl = wxaui.wxAuiNotebook(self.frame, wx.wxID_ANY,
+                                    wx.wxPoint(w,h), --wx.wxPoint(client_size.x, client_size.y),
+                                    wx.wxSize(430,200),
+                                    self.m_notebook_style);
+    local leftTree = self:CreateTreeCtrl()
     -- wx.wxMessageBox("What is treeCtrl " .. type(treeCtrl),"",wx.wxOK+wx.wxICON_EXCLAMATION,wx.NULL)
     self.frame.m_mgr:AddPane(leftTree,wxaui.wxAuiPaneInfo():Name("test"):Caption("Blah"):Left():Layer(1):Position(1):CloseButton(true):MaximizeButton(true))
     
