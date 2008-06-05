@@ -3,7 +3,7 @@
     <FileVersion major="1" minor="9" />
     <object class="Project" expanded="1">
         <property name="class_decoration"></property>
-        <property name="code_generation">XRC</property>
+        <property name="code_generation">C++</property>
         <property name="disconnect_events">1</property>
         <property name="encoding">UTF-8</property>
         <property name="event_generation">connect</property>
@@ -104,7 +104,7 @@
                                 <property name="name">m_auinotebook1</property>
                                 <property name="permission">protected</property>
                                 <property name="pos"></property>
-                                <property name="size"></property>
+                                <property name="size">50,-1</property>
                                 <property name="style">wxAUI_NB_DEFAULT_STYLE</property>
                                 <property name="subclass"></property>
                                 <property name="tab_ctrl_height">-1</property>
