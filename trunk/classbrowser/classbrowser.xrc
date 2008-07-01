@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="browserFrame">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>800,660</size>
+		<tooltip>Code Browser</tooltip>
+		<title>Code Browser</title>
+		<object class="wxFlexGridSizer">
+			<rows>2</rows>
+			<cols>1</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols>0</growablecols>
+			<growablerows>1</growablerows>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>0</border>
+				<object class="wxGridSizer">
+					<rows>1</rows>
+					<cols>4</cols>
+					<vgap>0</vgap>
+					<hgap>0</hgap>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>1</border>
+						<object class="wxFlexGridSizer">
+							<rows>4</rows>
+							<cols>1</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols>0</growablecols>
+							<growablerows>1,3</growablerows>
+							<object class="sizeritem">
+								<option>1</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>2</border>
+								<object class="wxStaticText" name="m_staticText3">
+									<bg>#d4d0c8</bg>
+									<label>Projects</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxTreeCtrl" name="projTreeCtrl">
+									<style>wxTR_DEFAULT_STYLE</style>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>1</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxStaticText" name="m_staticText4">
+									<bg>#d4d0c8</bg>
+									<label>Packages</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxTreeCtrl" name="pkgTreeCtrl">
+									<style>wxTR_DEFAULT_STYLE</style>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>1</border>
+						<object class="wxFlexGridSizer">
+							<rows>1</rows>
+							<cols>1</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols>0</growablecols>
+							<growablerows>0</growablerows>
+							<object class="sizeritem">
+								<option>1</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxNotebook" name="m_notebook4">
+									<object class="notebookpage">
+										<label>Class List</label>
+										<selected>0</selected>
+										<object class="wxPanel" name="m_panel10">
+											<style>wxTAB_TRAVERSAL</style>
+											<object class="wxGridSizer">
+												<rows>1</rows>
+												<cols>1</cols>
+												<vgap>0</vgap>
+												<hgap>0</hgap>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL|wxEXPAND</flag>
+													<border>1</border>
+													<object class="wxListBox" name="classListBox">
+														<content />
+													</object>
+												</object>
+											</object>
+										</object>
+									</object>
+									<object class="notebookpage">
+										<label>Class Hierarchy</label>
+										<selected>0</selected>
+										<object class="wxPanel" name="m_panel11">
+											<style>wxTAB_TRAVERSAL</style>
+											<object class="wxGridSizer">
+												<rows>1</rows>
+												<cols>1</cols>
+												<vgap>0</vgap>
+												<hgap>0</hgap>
+												<object class="sizeritem">
+													<option>0</option>
+													<flag>wxALL|wxEXPAND</flag>
+													<border>1</border>
+													<object class="wxTreeCtrl" name="classTreeCtrl">
+														<style>wxTR_DEFAULT_STYLE</style>
+													</object>
+												</object>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>1</border>
+						<object class="wxFlexGridSizer">
+							<rows>2</rows>
+							<cols>1</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols>0</growablecols>
+							<growablerows>1</growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>2</border>
+								<object class="wxStaticText" name="m_staticText6">
+									<bg>#d4d0c8</bg>
+									<label>Category</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxListBox" name="catListBox">
+									<content />
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>1</border>
+						<object class="wxFlexGridSizer">
+							<rows>2</rows>
+							<cols>1</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols>0</growablecols>
+							<growablerows>1</growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>2</border>
+								<object class="wxStaticText" name="m_staticText7">
+									<bg>#d4d0c8</bg>
+									<label>Members</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>1</border>
+								<object class="wxListBox" name="memberListBox">
+									<content />
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND|wxALL</flag>
+				<border>1</border>
+				<object class="wxNotebook" name="lowerNotebook">
+					<object class="notebookpage">
+						<label>Method Source</label>
+						<selected>1</selected>
+						<object class="wxPanel" name="methodPanel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="notebookpage">
+						<label>Class Definition</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="classPanel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="notebookpage">
+						<label>Class Comments</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="commentsPanel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="notebookpage">
+						<label>Code Critic</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="criticPanel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxGridSizer">
+								<rows>1</rows>
+								<cols>1</cols>
+								<vgap>0</vgap>
+								<hgap>0</hgap>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALL|wxEXPAND</flag>
+									<border>1</border>
+									<object class="wxTreeCtrl" name="criticTreeCtrl">
+										<style>wxTR_DEFAULT_STYLE</style>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+		<object class="wxStatusBar" name="m_statusBar1">
+			<style>wxST_SIZEGRIP</style>
+			<fields>1</fields>
+		</object>
+		<object class="wxMenuBar" name="m_menubar1">
+			<label>MyMenuBar</label>
+			<object class="wxMenu" name="fileMenu">
+				<label>File</label>
+				<object class="wxMenuItem" name="fileExit">
+					<label>Exit</label>
+					<help></help>
+				</object>
+			</object>
+			<object class="wxMenu" name="m_menu2">
+				<label>MyMenu</label>
+			</object>
+			<object class="wxMenu" name="m_menu3">
+				<label>MyMenu</label>
+			</object>
+		</object>
+		<object class="wxToolBar" name="m_toolBar1">
+			<style>wxTB_HORIZONTAL</style>
+			<bitmapsize></bitmapsize>
+			<margins></margins>
+			<packing>1</packing>
+			<separation>5</separation>
+			<object class="tool" name="newProjectTool">
+				<label>newProject</label>
+				<tooltip>New Project</tooltip>
+				<longhelp></longhelp>
+				<bitmap />
+			</object>
+			<object class="tool" name="m_tool2">
+				<label>tool</label>
+				<tooltip></tooltip>
+				<longhelp></longhelp>
+				<bitmap />
+			</object>
+			<object class="tool" name="m_tool3">
+				<label>tool</label>
+				<tooltip></tooltip>
+				<longhelp></longhelp>
+				<bitmap />
+			</object>
+		</object>
+	</object>
+</resource>
