@@ -1,6 +1,12 @@
+
+-- browser.lua
+-- dennis sacks
+-- uses code from the wxlua editor sample application
+
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;lib/?.dll"
 require("wx")
+dofile( "projects.lua" )
 
 local ID_IDCOUNTER = wx.wxID_HIGHEST + 1
 function NewID()
@@ -99,6 +105,8 @@ local char_CR  = string.byte("\r")
 local char_LF  = string.byte("\n")
 local char_Tab = string.byte("\t")
 local char_Sp  = string.byte(" ")
+
+local projectFile = ""
 
 programName      = nil    -- the name of the wxLua program to be used when starting debugger
 editorApp        = wx.wxGetApp()
