@@ -20,11 +20,10 @@ function Project:Add(name,lang,dir,srcdir)
     t.name = name
     t.dir = dir
     t.srcdir = srcdir
-    t.lang = lang
     -- TODO: read in source files
-    -- t.srcfiles = {}
-    -- t.packages = {}
-    -- t.classes = {}
+    t.srcfiles = {}
+    t.packages = {}
+    t.classes = {}
 
     projectList[name] = t
 end
