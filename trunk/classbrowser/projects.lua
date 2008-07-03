@@ -1,6 +1,6 @@
 -- part of browser.lua
 
-dofile( "table.save-0.94.lua" )
+require "lib/luasqlite3"
 
 local Project = {}
 mt = {}
