@@ -4,7 +4,7 @@
 -- uses code from the wxlua editor sample application
 
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
-package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;lib/?.dll"
+package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;lib/?.dll;/usr/local/luaaio/lib/?.so"
 require("wx")
 dofile( "projects.lua" )
 
@@ -142,13 +142,13 @@ wxkeywords       = nil    -- a string of the keywords for scintilla of wxLua's w
 font             = nil    -- fonts to use for the editor
 fontItalic       = nil
 function OnShowMessage()
-	wx.wxMessageBox("Hey there, how goes it?")
+    wx.wxMessageBox("Hey there, how goes it?")
 end
 
 function OnQuit()
-	dialog:Show(false)
-	dialog:Destroy()
-	return
+    dialog:Show(false)
+    dialog:Destroy()
+    return
 end
 
 function main()
@@ -158,18 +158,18 @@ function main()
     local xrcFilename = "classbrowser.xrc"
 
     while not xmlResource:Load(xrcFilename) do
-	-- must unload the file before we try again
-	xmlResource:Unload(xrcFilename)
-	
-	wx.wxMessageBox("Error loading xrc resource")
-	return
+    -- must unload the file before we try again
+    xmlResource:Unload(xrcFilename)
+    
+    wx.wxMessageBox("Error loading xrc resource")
+    return
     end
 
 
     frame = wx.wxFrame()
     if not xmlResource:LoadFrame(frame, wx.NULL, "browserFrame") then
-	wx.wxMessageBox("Error loading xrc resource")
-	return
+    wx.wxMessageBox("Error loading xrc resource")
+    return
     end
 
     -- get resources
@@ -440,4 +440,4 @@ main()
 frame:Show(true)
 wx.wxGetApp():MainLoop()
 
-	
+    
