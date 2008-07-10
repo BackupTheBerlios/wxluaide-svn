@@ -4,8 +4,10 @@ require 'lib/luasqlite3'
 db = sqlite3.open("cbrowser.db3")
 
 db:exec[[ 
-    create table project (id, name, baseDir,srcDir,classes,srcFiles,packages,type);
-    create table package (id, projectid, package,code);
-	create table settings (id, settings);
+    create table project ( name, data);
+    create table package ( package,class, code);
+	create table settings (name, settings);
  
  ]]
+ 
+ db:close()

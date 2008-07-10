@@ -39,14 +39,32 @@ Database = class(function(db)
     end)
 	
 function Database:loadSettings()
-	local row = db.db:first_row("select settings from settings")
+	local row = self.db:first_row("select settings from settings")
         return table.load(row.settings)
+end
+
+function Database:getProjectList()
+    local projectList = {}
+    for row in self.db:rows("select oid, name, data from project") do
+	projectList[row.name] = table.load(row.data)
+    end
+    
+    return projectList
+end
+
+function Database:createProject(name, data)
+    local insert_stmt = self.db:prepare[[
+	insert into project(name,data) values(?,?)
+    ]]
+    
+    insert_stmt:bind(name,table.save(data))
+    insert_stmt:exec()
 end
 
 function Database:saveSettings(t)
         local tb = {}
         tb.settings = table.save(t)
-	local settingsStmt = assert(db.db:prepare[[
+	local settingsStmt = assert(self.db:prepare[[
         BEGIN TRANSACTION;
 		INSERT INTO settings(settings) VALUES (:settings);
 	COMMIT
