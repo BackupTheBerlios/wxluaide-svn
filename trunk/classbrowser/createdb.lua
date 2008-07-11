@@ -7,7 +7,8 @@ db:exec[[
     create table project ( name, autoload, data);
     create table package ( package,class, code);
     create table settings (name, settings);
- 
+    insert into project (name,autoload,data) values ('browser',1);
+    insert into project (name,autoload,data) values ('ide',0);
  ]]
  
  db:close()

@@ -43,10 +43,12 @@ function Database:loadSettings()
         return table.load(row.settings)
 end
 
+
 function Database:getProjectList()
+    -- return list of project names and whether they should be autoloaded or not
     local projectList = {}
-    for row in self.db:rows("select oid, name, data from project") do
-	projectList[row.name] = table.load(row.data)
+    for row in self.db:rows("select oid, name, autoload from project") do
+	projectList[row.name] = row.autoload
     end
     
     return projectList
@@ -59,6 +61,19 @@ function Database:createProject(name, data)
     
     insert_stmt:bind(name,table.save(data))
     insert_stmt:exec()
+end
+
+function Database:loadProject(name)
+    local t = {}
+    -- loads project from db given name
+    local stmt = self.db:prepare("select oid, autoload, data from project where name = ?")
+    stmt:bind(name)
+    local row = stmt:first_row()
+    t = table.load(row.data)
+    t.oid = row.oid
+    t.autoload = row.autoload
+    t.name = name
+    return t
 end
 
 function Database:saveSettings(t)
