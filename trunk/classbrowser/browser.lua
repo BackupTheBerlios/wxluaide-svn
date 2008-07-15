@@ -6,7 +6,7 @@
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;lib/?.dll;/usr/local/luaaio/lib/?.so"
 require("wx")
-dofile( "projects.lua" )
+require 'classes'
 
 local ID_IDCOUNTER = wx.wxID_HIGHEST + 1
 function NewID()
@@ -174,8 +174,10 @@ function main()
 
     -- get resources
     local pkgTreeCtrl = frame:FindWindow(xmlResource.GetXRCID("pkgTreeCtrl")):DynamicCast("wxTreeCtrl")
+    local projectTreeCtrl = frame:FindWindow(xmlResource.GetXRCID("projTreeCtrl")):DynamicCast("wxTreeCtrl")
     local classTreeCtrl = frame:FindWindow(xmlResource.GetXRCID("classTreeCtrl")):DynamicCast("wxTreeCtrl")
     local classListBox = frame:FindWindow(xmlResource.GetXRCID("classListBox")):DynamicCast("wxListBox")
+
     classTreeCtrl:SetSize(-1,450)
 
     -- set up method Editor
@@ -216,7 +218,14 @@ function main()
 
     -- frame:Show(true)
 
-
+    -- startup projects
+    print("getting projects?")
+    db = Database()
+    list = db:getProjectList()
+    for i,v in pairs(list) do
+	projectTreeCtrl:AddRoot(i)
+	print( i)
+    end
 
 end
 

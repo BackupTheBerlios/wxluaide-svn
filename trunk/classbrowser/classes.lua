@@ -48,9 +48,11 @@ function Database:getProjectList()
     -- return list of project names and whether they should be autoloaded or not
     local projectList = {}
     for row in self.db:rows("select oid, name, autoload from project") do
-	projectList[row.name] = row.autoload
+	projectList[row.name] = {}
+	projectList[row.name].oid = row.oid
+	projectList[row.name].autoload = row.autoload
+	print (row.name)
     end
-    
     return projectList
 end
 
